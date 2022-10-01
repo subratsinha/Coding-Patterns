@@ -1,3 +1,25 @@
-class Solution:
-    def isPalindrome(self, x: int) -> bool:
-        return True if str(x)==str(x)[::-1] else False
+#include <stdio.h>
+#include <conio.h>
+void main() 
+{
+     int n, rev, remainder, original;
+     rev=0;
+     printf("Enter an number: ");
+     scanf("%d", &n);
+     original = n;
+     while (n != 0) 
+    {
+        remainder = n % 10;
+        rev = rev * 10 + remainder;
+        n =n/ 10;
+    }
+    if (original == rev)
+    {
+        printf("%d is a palindrome.", original);
+    }
+    else
+    {
+        printf("%d is not a palindrome.", original);
+    }
+    getch();
+}
