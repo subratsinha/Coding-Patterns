@@ -1,4 +1,4 @@
-
+// soving through factorial function
 import java.util.*;
 class Pascal {
     public List<List<Integer>> generate(int numRows) {
