@@ -1,6 +1,8 @@
 // soving through factorial function
 import java.util.*;
+
 class Pascal {
+    static Scanner sc = new Scanner(System.in);
     public List<List<Integer>> generate(int numRows) {
      
         List myList = new ArrayList();
@@ -42,7 +44,9 @@ class Pascal {
     
     public static void main(String atgs[]){
         Pascal ob1 = new Pascal();
-        System.out.println(ob1.generate(23));
+	System.out.println("enter the rows");
+	int r = sc.nextInt();
+        System.out.println(ob1.generate(r));
     }
     
 }
