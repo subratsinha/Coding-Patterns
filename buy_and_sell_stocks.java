@@ -1,5 +1,6 @@
 // best time to buy and sell stocks solved through divide and conquer technique
 // leetcode 121
+import java.util.*;
 class Solution {
     public int maxProfit(int[] prices) {
         int high = prices.length-1;
