@@ -1,5 +1,6 @@
 // best time to buy and sell stocks solved through divide and conquer technique
 // leetcode 121
+// less time complexity than n^2
 import java.util.*;
 class Solution {
     public int maxProfit(int[] prices) {
@@ -68,5 +69,16 @@ class Solution {
         }
         return (leftsum+rightsum);
     }
-    
+    public static void main(String[] args){
+	int maximumprofit;
+    	Solution ob2 = new Solution();
+	Scanner sc = new Scanner(System.in);
+	System.out.println("enter the size of array");
+	int n = sc.nextInt();
+	int prices = new int[n];
+	for(int a=0;a<n;a++){
+		prices[a] = sc.nextInt();
+	}
+	maximumprofit = ob2.maxProfit(prices);
+	System.out.println(maximumprofit);
 }
