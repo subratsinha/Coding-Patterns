@@ -73,7 +73,7 @@ class Solution {
 	int maximumprofit;
     	Solution ob2 = new Solution();
 	Scanner sc = new Scanner(System.in);
-	System.out.println("enter the size of array");
+	System.out.println("enter the size of array where prizes on each days are written");
 	int n = sc.nextInt();
 	int prices = new int[n];
 	for(int a=0;a<n;a++){
