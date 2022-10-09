@@ -1,3 +1,5 @@
+// https://leetcode.com/problems/divide-array-into-equal-pairs/
+
 class Solution {
     public boolean divideArray(int[] nums) {
         int[] count=new int[1000];
