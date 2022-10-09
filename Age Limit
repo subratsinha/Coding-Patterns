@@ -1,0 +1,6 @@
+# https://www.codechef.com/submit/AGELIMIT
+# cook your dish here
+
+for i in range(int(input())):
+    [X,Y,A] = map(int, input().split())
+    print("YES" if A >= X and A < Y else "NO")
