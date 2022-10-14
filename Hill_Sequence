@@ -1,0 +1,104 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+
+int main(){
+    int t;
+    cin>>t;
+
+    while(t--){
+        int n;
+        cin>>n;
+        vector<int> v;
+
+        for(int i=0;i<n;i++){
+            int a;
+            cin>>a;
+            v.push_back(a);
+        }
+
+        sort(v.begin(),v.end(),greater<int>());
+
+        bool strict = true;
+        bool three = false;
+        for(int i=0;i<n-1;i++){
+            if(v[i]<=v[i+1]){
+                strict = false;
+                break;
+            }
+        }
+        
+        if(strict){
+            for(int i=0;i<n;i++){
+                cout<<v[i]<<" ";
+            }
+            cout<<endl;
+        } else{
+            unordered_map<int,int> m;
+            for(int i=0;i<n;i++){
+               m[v[i]]+=1;
+            }
+            vector<int> lower;
+            vector<int> upper;
+            for(auto i=m.begin();i!=m.end();i++){
+                if(i->second>=3){
+                    three = true;
+                    break;
+                }
+            }
+
+            if(three || m[v[0]]>1){
+                cout<<-1<<endl;
+            }else{
+                for(auto i=m.begin();i!=m.end();i++){
+                if(i->second==2){
+                    lower.push_back(i->first);                
+                } 
+                if(i->second<=2){
+                    upper.push_back(i->first);
+                }
+            }
+            
+
+            sort(lower.begin(),lower.end());
+            sort(upper.begin(),upper.end(),greater<int>());
+
+            bool repeat = false;
+
+            for(int i=0;i<lower.size()-1;i++){
+                if(lower[i]>=lower[i+1]){
+                    repeat = true;
+                    break;
+                }
+            }
+
+            for(int i=0;i<upper.size()-1;i++){
+                if(upper[i]<=upper[i+1]){
+                    repeat = true;
+                    break;
+                }
+            }
+
+
+            if(repeat){
+                cout<<-1<<endl;
+            } else{
+                for(int i=0;i<lower.size();i++){
+                    cout<<lower[i]<<" ";
+                }
+
+                for(int i=0;i<upper.size();i++){
+                    cout<<upper[i]<<" ";
+                }
+                cout<<endl;
+            }
+
+            }
+
+
+
+
+         }
+        }
+
+}
