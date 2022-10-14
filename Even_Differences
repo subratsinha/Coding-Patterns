@@ -1,0 +1,39 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+
+int main(){
+    int t;
+    cin>>t;
+
+    while(t--){
+        int n;
+        cin>>n;
+        vector<int> arr(n);
+
+        for(int i=0;i<n;i++){
+            cin>>arr[i];
+        }
+        int operations = 0;
+        int numEven = 0;
+        int numOdd = 0;
+
+        for(int i=0;i<n;i++){
+            if(arr[i]%2==0){
+                numEven+=1;
+            } else {
+                numOdd+=1;
+            }
+        }
+
+        if(numOdd != n && numEven != n){
+            if(numOdd >= numEven){
+                operations = n-numOdd;
+            } else {
+                operations = n-numEven;
+            }
+        }
+
+        cout<<operations<<endl;
+    }
+}
