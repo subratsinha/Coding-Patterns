@@ -1,0 +1,76 @@
+#include<bits/stdc++.h>
+#define fo(a,b)       for(long long int i=a;i<=b;i++)
+#define ll             long long int
+#define mid(l,r)              (l+(r-l)/2)
+using namespace std;
+vector<ll>add(vector<long long int>v1,vector<long long int>v2){
+  vector<long long int>ans;
+  reverse(v1.begin(),v1.end());
+  reverse(v2.begin(),v2.end());
+  ll len=min(v1.size(),v2.size());
+  ll carry=0;
+  for(int i=0;i<=len-1;i++){
+    ll val=v1[i]+v2[i]+carry;
+    // to take out carry eg.19 carry-->9
+    carry=val/10;
+    //and to take out answer eg.19 -->ans->1
+    ans.emplace_back(val%10);
+    }
+    if(v1.size()>len){
+      for(int i=0;i<v1.size();i++){
+        ll val=v1[i]+carry;
+        carry=val/10;
+        ans.emplace_back(val%10);
+        }
+    }
+    if(v2.size()>len){
+      for(int i=0;i<v2.size();i++){
+        ll val=v2[i]+carry;
+        carry=val/10;
+        ans.emplace_back(val%10);
+      }
+    }
+    while(carry){
+    ans.emplace_back(carry%10);
+      carry/=10; 
+    }
+    reverse(ans.begin(),ans.end());
+    return ans;
+  }
+int main() {
+  // std::cout << "Hello World!\n";
+  // it n;
+  // cin>>n;
+  ll t;
+  cout<<"test cases"<<endl;
+  cin>>t;
+  while(t--){
+    string a;
+    string b;
+    cin>>a>>b;
+    vector<long long int> v;
+    vector<long long int> v1;
+    for(int i=0;i<=a.size()-1;i++){
+          //the number in the form of charecter will get converted into an integer
+          v.emplace_back(a[i]-'0');
+    }
+    //similarly we will do it form second string
+    for(int i=0;i<=b.size()-1;i++){
+      v1.emplace_back(b[i]-'0');
+    }
+
+    // for(int i=0;i<=v.size()-1;i++){
+    //   cout<<v[i]<<"";
+    // }
+    // cout<<" ";
+    // for(int i=0;i<=v1.size()-1;i++){
+    //     cout<<v1[i];
+    // }
+    vector<ll>sum=add(v,v1);
+  // cout<<n;
+    for(auto it:sum){
+      cout<<it<<" ";
+      }
+  }
+return 0;
+}
