@@ -1,0 +1,44 @@
+/*
+Simple approach here is to do the task of eliminating characters
+if adjacents repeat, so we start by taking an empty string and
+keep on adding characters if its adjacent input string is not same;
+
+*/
+
+
+#include<bits/stdc++.h>
+using namespace std;
+
+int main(){
+
+    string str;
+    cin>>str;
+
+    stack <int> s;
+
+    s.push(str[0]);
+
+    for(int i=1;str[i]!='\0';i++){
+        if(s.top()==str[i]){
+            s.pop();
+        } 
+        else{
+            s.push(str[i]);
+        }
+    }
+
+    string reduced;
+    
+    while(!s.empty()){
+        reduced += s.top();
+    }
+
+    for(int i=0;reduced[i]!='\0';i++){
+        reduced[i] = reduced[reduced.length()-i-1];
+    }
+    
+    if(reduced.length()==0){
+        cout<<"Empty String";
+    } else cout<<reduced;
+
+}
