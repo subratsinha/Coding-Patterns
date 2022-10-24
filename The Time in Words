@@ -1,0 +1,84 @@
+Given the time in numerals we may convert it into words, as shown below:
+
+At , use o' clock. For , use past, and for  use to. Note the space between the apostrophe and clock in o' clock. Write a program which prints the time in words for the input given in the format described.
+
+Function Description
+
+Complete the timeInWords function in the editor below.
+
+timeInWords has the following parameter(s):
+
+int h: the hour of the day
+int m: the minutes after the hour
+Returns
+
+string: a time string as described
+Input Format
+
+The first line contains , the hours portion The second line contains , the minutes portion
+
+
+//////////////////////////////////////////////////////////////////////////////////// SOLUTION //////////////////////////////////////////////////////////////////////////////////////
+
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+#
+# Complete the 'timeInWords' function below.
+#
+# The function is expected to return a STRING.
+# The function accepts following parameters:
+#  1. INTEGER h
+#  2. INTEGER m
+#
+
+
+//////////////////////////////////////////////////////////////////////////////////////////
+
+def timeInWords(h, m):
+    # Write your code here
+    res = ''
+    numbers = ['','one','two','three','four','five','six','seven','eight','nine','ten','eleven','twelve', 'thirteen','fourteen','fifteen','sixteen','seventeen','eighteen','nineteen','twenty']
+    minute = 'minute'
+    
+    if m != 1:
+        minute += 's'
+        
+    if m == 0:
+        res = numbers[h] + " o' clock"
+    elif m == 30:
+        res = "half past " + numbers[h]
+    elif m == 15:
+        res = "quarter past " + numbers[h]
+    elif m == 45:
+        res = "quarter to " + numbers[h + 1]
+    elif m < 20:
+        res = numbers[m] + ' ' + minute + ' past ' + numbers[h]
+    elif m < 30:
+        res = numbers[-1] + ' ' + numbers[int(m%10)] + ' ' + minute + ' past ' + numbers[h]
+    elif m > 45:
+        res = numbers[60 - m] + ' ' + minute + ' to ' + numbers[h + 1]
+    elif m > 30:
+        res = numbers[-1] + ' ' + numbers[int(m%10)] + ' ' + minute + ' to ' + numbers[h + 1]
+    
+    return res.replace('  ', ' ')
+    
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    h = int(input().strip())
+
+    m = int(input().strip())
+
+    result = timeInWords(h, m)
+
+    fptr.write(result + '\n')
+
+    fptr.close()
