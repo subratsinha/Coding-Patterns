@@ -38,6 +38,6 @@ public:
             }
         }
         
-        return ans[0];
+        return ans[0];//output
     }
 };
